@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#this program prints bad luck from each of the country China, Japan, Italy after specific number
+i=1
+while [ $i -le 20 ]; do
+	echo "$i"
+
+	case "$i" in 
+	4)
+		echo "bad luck from China"
+		;;
+	9) 
+		echo "bad luck from Japan"
+		;;	
+	17)
+		echo "bad luck from Italy"
+		;;
+
+	esac	
+	i=$((i+1))
+done
+	
