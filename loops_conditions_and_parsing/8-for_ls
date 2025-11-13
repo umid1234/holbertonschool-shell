@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Displays directory content after the first dash using cut
+
+for file in *; do
+    echo "$file" | cut -d "-" -f 2-
+done
+
