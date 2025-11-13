@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This code uses iteration and has if conditions to print Hi if count is 9
+
+i=1
+while [ $i -le 10 ];
+do
+	if [ $i -ne 9 ]; then
+		echo "Best School"
+	else
+		echo "Hi"
+	fi
+	i=$((i+1))
+done	
