@@ -1,4 +1,4 @@
-#!/bin/bash/env bash
+#!/usr/bin/env
 # This script is displaying "Best School" 10 times
 count=1
 while [ $count -le 10 ];
