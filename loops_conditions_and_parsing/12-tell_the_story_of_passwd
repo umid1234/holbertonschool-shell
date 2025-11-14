@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# this code prings the story
 while read line
 do
 	USERNAME=$(echo "$line" | cut -d: -f1)
