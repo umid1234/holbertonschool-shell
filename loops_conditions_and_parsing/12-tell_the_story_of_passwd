@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # this code prings the story
-while read line
+while read -r line
 do
 	USERNAME=$(echo "$line" | cut -d: -f1)
 	GROUP_ID=$(echo "$line" | cut -d: -f4)
