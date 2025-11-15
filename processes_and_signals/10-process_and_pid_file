@@ -2,7 +2,7 @@
 # Script that writes its PID to /var/run/myscript.pid and reacts to signals
 # shellcheck disable=SC2009
 
-echo $$ > /var/run/myscript.pid
+ echo $$ > /var/run/myscript.pid
 
 # receiving SIGTERM
 trap 'echo "I hate the kill command"' SIGTERM
@@ -19,4 +19,3 @@ do
     echo "To infinity and beyond"
     sleep 2
 done
-
