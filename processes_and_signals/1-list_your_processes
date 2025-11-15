@@ -1,0 +1,3 @@
+#/usr/bin/env bash
+#This script shows how ps aux command works. ps shows processes a means all u user-oriented format x means even background processes like daemon and servicese
+ps aux
