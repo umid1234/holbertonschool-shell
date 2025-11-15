@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script show my SHELL PID using grep instead pgrep
+# shellcheck disable=SC2009
+ps aux | grep bash
