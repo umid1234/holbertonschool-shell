@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This is the code that will terminate the program 4
+# shellcheck disable=SC2009
+pkill -f 4-to_infinity_and_beyond
