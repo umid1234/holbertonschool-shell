@@ -2,18 +2,16 @@
 # Script that writes its PID to /var/run/myscript.pid and handles signals
 
 PIDFILE="/var/run/myscript.pid"
-
-# Write PID using tee (works in Holberton sandbox)
-echo "$$" | sudo tee "$PIDFILE" > /dev/null
+echo "$$" > "$PIDFILE"
 
 # SIGINT (Ctrl+C)
 trap 'echo "Y U no love me?!";' SIGINT
 
-# SIGTERM (kill)
+# SIGTERM (pkill/kill)
 trap 'echo "I hate the kill command"' SIGTERM
 
-# SIGQUIT and SIGTERM → cleanup and exit
-trap 'rm -f "$PIDFILE"; exit' SIGQUIT SIGTERM
+# SIGQUIT only → cleanup + exit
+trap 'rm -f "$PIDFILE"; exit' SIGQUIT
 
 while true
 do
