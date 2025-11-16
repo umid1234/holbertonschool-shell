@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
-# Parse Apache logs and group by IP and HTTP status code
-
+# Group visitors by IP and HTTP status code
 awk '
-{
-    # Check if the line has at least 9 fields (basic Apache log format validation)
-    if (NF >= 9) {
-        # Extract IP address (first field) and HTTP status code (9th field)
-        ip = $1
-        status_code = $9
-        
-        # Count occurrences of each IP-status combination
-        count[ip " " status_code]++
-    }
+NF >= 9 {
+    count[$1 " " $9]++
 }
 END {
-    # Output all IP-status combinations with their counts
-    for (combination in count) {
-        printf "%5d %s\n", count[combination], combination
+    for (key in count) {
+        printf "%5d %s\n", count[key], key
     }
 }' | sort -rn
