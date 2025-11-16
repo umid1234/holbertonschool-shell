@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Read from standard input (Apache log file)
 awk '
 {
