@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
-# Script that writes its PID to /var/run/myscript.pid and reacts to signals
-# shellcheck disable=SC2009
+# Script that writes its PID to a file and handles signals
 
- echo $$ > /var/run/myscript.pid
+PIDFILE="/var/run/myscript.pid"
+echo "$$" > "$PIDFILE"
 
-# receiving SIGTERM
+# SIGINT  → ctrl+c
+trap 'echo "Y U no love me?!";' SIGINT
+
+# SIGTERM → kill, pkill, kill PID
 trap 'echo "I hate the kill command"' SIGTERM
 
-# When receiving SIGINT (Ctrl+C)
-trap 'echo "Y U no love me?!"; rm -f /var/run/myscript.pid; exit' SIGINT
+# SIGQUIT and SIGTERM → clean up and exit
+trap 'rm -f "$PIDFILE"; exit' SIGQUIT SIGTERM
 
-# When receiving SIGQUIT
-trap 'rm -f /var/run/myscript.pid; exit' SIGQUIT
-
-# Infinite loop
 while true
 do
     echo "To infinity and beyond"
