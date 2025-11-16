@@ -1,13 +1,22 @@
-#!/usr/bin/env bash
-# Script that groups Apache log data by IP and HTTP code
+#!/bin/bash
 
+# Read from standard input (Apache log file)
 awk '
-    $1 ~ /^[0-9.]+$/ && $9 ~ /^[0-9]+$/ {
-        key = $1 " " $9
-        count[key]++
+{
+    # Extract IP address (first field) and HTTP status code (9th field)
+    ip = $1
+    status = $9
+    
+    # Create a unique key combining IP and status code
+    key = ip " " status
+    
+    # Count occurrences of each IP-status combination
+    count[key]++
+}
+
+END {
+    # After processing all lines, output the results
+    for (key in count) {
+        printf "%5d %s\n", count[key], key
     }
-    END {
-        for (k in count)
-            printf "%5d %s\n", count[k], k
-    }
-' apache-access.log | sort -nr -k1,1
+}' | sort -rn
