@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-# Script that kills the 7-highlander process
-pkill -f 7-highlander
+# Script that kills the process 7-highlander
+
+PID=$(pgrep -x "7-highlander")
+
+if [ -n "$PID" ]; then
+    kill "$PID"
+fi
