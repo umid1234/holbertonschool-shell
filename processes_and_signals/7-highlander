@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#A script that: Prints To infinity and beyond indefinitely Sleeps 2 seconds each loop On SIGTERM, printsœI am invincible
 trap "echo 'I am invincible!!!'" SIGTERM
 while true
 do
