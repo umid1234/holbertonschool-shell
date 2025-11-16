@@ -2,5 +2,5 @@
 # Script that groups Apache log data by IP and status code
 
 awk '{print $1, $9}' apache-access.log \
-    | awk '{count[$0]++} END {for (key in count) printf "%d %s\n", count[key], key}' \
-    | sort -nr
+  | awk '{c[$0]++} END {for (k in c) printf "%5d %s\n", c[k], k}' \
+  | sort -nr
