@@ -1,11 +1,3 @@
 #!/usr/bin/env bash
-# Group visitors by IP and HTTP status code
-awk '
-NF >= 9 {
-    count[$1 " " $9]++
-}
-END {
-    for (key in count) {
-        printf "%5d %s\n", count[key], key
-    }
-}' | sort -rn
+# Count IP and status code occurrences
+awk 'NF >= 9 {print $1, $9}' | sort | uniq -c | sort -rn | awk '{printf "%5d %s %s\n", $1, $2, $3}'
