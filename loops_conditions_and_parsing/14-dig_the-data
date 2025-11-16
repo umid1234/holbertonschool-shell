@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that groups Apache log data by IP and status code
+
+awk '{print $1, $9}' apache-access.log \
+    | awk '{count[$0]++} END {for (key in count) printf "%d %s\n", count[key], key}' \
+    | sort -nr
